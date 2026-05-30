@@ -85,6 +85,7 @@ jobs:
           RAILS_ENV: test
         run: |
           bin/rails db:create
+          bin/rails db:migrate
           bin/rails db:test:prepare
 
       - name: Run tests
@@ -114,6 +115,7 @@ jobs:
           RAILS_ENV: test
         run: |
           bin/rails db:create
+          bin/rails db:migrate
           bin/rails db:test:prepare
 
       - name: Run System Tests
