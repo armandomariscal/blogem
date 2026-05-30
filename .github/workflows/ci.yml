@@ -121,7 +121,12 @@ jobs:
       - name: Run System Tests
         env:
           RAILS_ENV: test
-        run: bin/rails test:system
+        run: |
+          if [ -d test/system ]; then
+            bin/rails test:system
+          else
+            echo "No system tests found yet. Skipping."
+          fi
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v7
