@@ -56,3 +56,18 @@ Displays a clean visualization of the active directory structure while filtering
 ```bash
 tree -I "log|tmp|storage|node_modules|vendor/bundle|public/assets|.git"
 ```
+
+---
+
+```bash
+bin/rails generate model Article title:string body:text
+```
+
+```text
+invoke  active_record
+create    db/migrate/20260601001655_create_articles.rb
+create    app/models/article.rb
+invoke    test_unit
+create      test/models/article_test.rb
+create      test/fixtures/articles.yml
+```
