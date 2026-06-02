@@ -135,3 +135,15 @@ irb> Article.find(1)
 ```bash
 irb> Article.all
 ```
+
+---
+
+### Routing & Inspection
+
+#### Inspect Application Routes
+
+Lists all defined routes within the application, mapping their respective URL patterns, HTTP verbs, controller actions, and named path helpers. This is critical for auditing RESTful mappings generated via resource macros.
+
+```bash
+bin/rails routes
+```
