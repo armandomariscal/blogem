@@ -1,9 +1,45 @@
 <h1>Artículos</h1>
 
+<%#
+APPROACH 1 (Hardcoded Paths):
+  Disadvantage: Highly fragile. If the URL structure changes in routes.rb, 
+  this breaks everywhere manually.
+%>
+
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <%= article.title %>
+      <a href="/articles/<%= article.id %>">
+        <%= article.title %>
+      </a>
     </li>
   <% end %>
 </ul>
+
+<%#
+APPROACH 2 (Path Helper with Anchor Tag):
+  Disadvantage: Better syntax using named routing helpers, but still verbose 
+  and relies on standard HTML elements instead of built-in Rails frameworks.
+%>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <a href="<%= article_path(article) %>">
+        <%= article.title %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<%# APPROACH 3 (Idiomatic Rails - Preferred) %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Nuevo Artículo", new_article_path %>
