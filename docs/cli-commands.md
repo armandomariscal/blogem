@@ -147,3 +147,31 @@ Lists all defined routes within the application, mapping their respective URL pa
 ```bash
 bin/rails routes
 ```
+
+---
+
+## Generate a Related Model
+
+Creates an ActiveRecord model with a foreign key reference to another model, along with its migration, fixtures, and test suite.
+
+```bash
+bin/rails generate model Comment commenter:string body:text article:references
+```
+
+### Arguments:
+
+- Comment (Model Name)
+- commenter:string (Comment author name)
+- body:text (Comment content)
+- article:references (Creates a foreign key relationship to the articles table)
+
+Example generated files:
+
+```bash
+invoke  active_record
+create    db/migrate/XXXXXXXXXXXXXX_create_comments.rb
+create    app/models/comment.rb
+invoke    test_unit
+create      test/models/comment_test.rb
+create      test/fixtures/comments.yml
+```
