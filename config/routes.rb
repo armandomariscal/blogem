@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   # Pros: Generates all 7 standard RESTful routes (index, show, new, create, edit, update, destroy)
   #       along with their respective URL path/url helpers in a single line.
   # Cons: Implies less explicit visibility in this file, but aligns with canonical Rails conventions.
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
 end
