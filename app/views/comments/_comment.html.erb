@@ -1,0 +1,11 @@
+<% unless comment.archived? %>
+    <p>
+    <strong>Comentarista:</strong>
+    <%= comment.commenter %>
+    </p>
+
+    <p>
+    <strong>Comentario:</strong>
+    <%= comment.body %>
+    </p>
+<% end %>

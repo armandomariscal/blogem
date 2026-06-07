@@ -175,3 +175,15 @@ invoke    test_unit
 create      test/models/comment_test.rb
 create      test/fixtures/comments.yml
 ```
+
+---
+
+```bash
+bin/rails generate migration AddStatusToArticles status:string
+bin/rails generate migration AddStatusToComments status:string
+bin/rails db:migrate
+```
+
+```bash
+bin/rails generate migration SetDefaultStatusOnArticlesAndComments
+```
