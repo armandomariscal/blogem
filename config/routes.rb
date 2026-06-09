@@ -14,4 +14,10 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+
+  get "/api/comments", to: "comments#api_index"
+  get "/api/comments_not_empty", to: "comments#api_index_not_empty"
+  get "/api/comments_without_body", to: "comments#api_index_without_body"
+  get "/api/comments_without_commenter", to: "comments#api_index_without_commenter"
+  get "/api/comments_incomplete", to: "comments#api_index_incomplete"
 end
