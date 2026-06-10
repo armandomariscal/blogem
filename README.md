@@ -12,10 +12,6 @@ Simple blog application built with Ruby on Rails 8 using the modern default Rail
 ![Importmap](https://img.shields.io/badge/Importmap-Rails-CC0000)
 ![Propshaft](https://img.shields.io/badge/Propshaft-Assets-6E56CF)
 ![Jbuilder](https://img.shields.io/badge/Jbuilder-JSON_API-CC0000)
-![Solid Queue](https://img.shields.io/badge/Solid_Queue-Background_Jobs-1E88E5)
-![Solid Cache](https://img.shields.io/badge/Solid_Cache-Rails-43A047)
-![Solid Cable](https://img.shields.io/badge/Solid_Cable-Action_Cable-8E24AA)
-![Docker](https://img.shields.io/badge/Docker-Kamal_Ready-2496ED?logo=docker)
 ![Testing](https://img.shields.io/badge/Testing-Minitest-00C853)
 ![Quality](https://img.shields.io/badge/Code_Quality-RuboCop-000000)
 ![Security](https://img.shields.io/badge/Security-Brakeman-orange)
@@ -36,9 +32,6 @@ A Rails blog application featuring articles, comments, validations, associations
 - JSON endpoints with Jbuilder
 - Hotwire support (Turbo + Stimulus)
 - SQLite database
-- Background job support with Solid Queue
-- Caching with Solid Cache
-- Action Cable support with Solid Cable
 
 ## Tech Stack
 
@@ -67,13 +60,6 @@ A Rails blog application featuring articles, comments, validations, associations
 - RuboCop Rails Omakase
 - Brakeman
 - Bundler Audit
-
-### DevOps & Tooling
-
-- Docker
-- Kamal
-- Thruster
-- Bootsnap
 
 ## Getting Started
 
