@@ -39,3 +39,34 @@ The following directories are explicitly omitted from standard architecture scan
 - `storage/` - Active Storage binaries and local SQLite raw databases.
 
 - `vendor/bundle/` - Local isolated runtime environment dependencies.
+
+## Inspecting Model Attributes
+
+Rails models do not explicitly declare database fields. Active Record discovers them from the database schema and generates accessor methods automatically.
+
+For example, the `Comment` model does not define attributes such as `commenter`, `body`, or `status` in `app/models/comment.rb`:
+
+```ruby
+class Comment < ApplicationRecord
+  include Visible
+
+  belongs_to :article
+
+  def ydob
+    body.reverse
+  end
+end
+```
+
+```shell
+bin/rails console
+Comment.column_names
+```
+
+### Where are model fields defined?
+
+Useful references:
+
+- `db/schema.rb` → current database structure
+- `Comment.column_names` → current model attributes
+- `Comment.attribute_names` → available attributes on the model

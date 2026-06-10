@@ -1,12 +1,34 @@
 class CommentsController < ApplicationController
   def api_index
-    render json: Comment.select(:commenter, :body)
+    comments = Comment.all
+
+    if params[:param].present?
+      comments_table = Comment.arel_table
+
+      comments = comments.where(
+        comments_table[:commenter].matches("%#{params[:param]}%")
+          .or(
+            comments_table[:body].matches("%#{params[:param]}%")
+          )
+      )
+    end
+
+    render json: comments.select(:commenter, :body)
+    # render json: Comment.select(:commenter, :body)
   end
 
   def api_index_not_empty
-    render json: Comment.where.not(commenter: [ "", nil ])
-                        .where.not(body: [ "", nil ])
-                        .select(:commenter, :body)
+    comments = Comment.where.not(commenter: ["", nil])
+                      .where.not(body: ["", nil])
+
+    if params[:param].present?
+      comments = comments.where(
+        "commenter LIKE :q OR body LIKE :q",
+        q: "%#{params[:param]}%"
+      )
+    end
+
+    render json: comments.select(:commenter, :body)
   end
 
   def api_index_without_body
@@ -15,8 +37,12 @@ class CommentsController < ApplicationController
   end
 
   def api_index_without_commenter
-    render json: Comment.where(commenter: [ "", nil ])
-                        .select(:commenter, :body)
+    comments = Comment.where(commenter: [ "", nil ])
+
+    render json: comments.as_json(
+      only: [:commenter, :body],
+      methods: [:ydob]
+    )
   end
 
   def api_index_incomplete
