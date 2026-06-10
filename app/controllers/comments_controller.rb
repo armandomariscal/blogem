@@ -18,8 +18,8 @@ class CommentsController < ApplicationController
   end
 
   def api_index_not_empty
-    comments = Comment.where.not(commenter: ["", nil])
-                      .where.not(body: ["", nil])
+    comments = Comment.where.not(commenter: [ "", nil ])
+                      .where.not(body: [ "", nil ])
 
     if params[:param].present?
       comments = comments.where(
@@ -40,8 +40,8 @@ class CommentsController < ApplicationController
     comments = Comment.where(commenter: [ "", nil ])
 
     render json: comments.as_json(
-      only: [:commenter, :body],
-      methods: [:ydob]
+      only: [ :commenter, :body ],
+      methods: [ :ydob ]
     )
   end
 
