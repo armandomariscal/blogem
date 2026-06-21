@@ -1,13 +1,14 @@
-<h1>Artículos</h1>
+<div class="flex justify-between items-center mb-6 border-b pb-4">
+  <h1 class="text-3xl font-extrabold text-gray-800 tracking-tight">Artículos</h1>
+  <%= link_to "Nuevo Artículo", new_article_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition shadow-sm" %>
+</div>
 
-<ul>
+<ul class="divide-y divide-gray-200">
   <% @articles.each do |article| %>
     <% unless article.archived? %>
-      <li>
-        <%= link_to article.title, article %>
+      <li class="py-3 flex justify-between items-center hover:bg-gray-50 px-2 rounded-md transition">
+        <%= link_to article.title, article, class: "text-blue-600 hover:text-blue-800 font-semibold hover:underline" %>
       </li>
     <% end %>
   <% end %>
 </ul>
-
-<%= link_to "Nuevo Artículo", new_article_path %>
